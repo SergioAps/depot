@@ -4,6 +4,11 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+User.delete_all
+User.create! name: 'dave',
+password: Rails.application.credentials.dave_password
+
+
 #   Character.create(name: "Luke", movie: movies.first)
 Product.delete_all
 Product.create!(title: 'Docker for Rails Developers',
