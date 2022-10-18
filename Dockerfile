@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:2.2.0
+FROM phusion/passenger-full:2.3.0
 
 RUN rm /etc/nginx/sites-enabled/default
 RUN rm -f /etc/service/nginx/down
@@ -13,8 +13,7 @@ WORKDIR /home/app/depot
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT="development test"
 COPY --chown=app:app Gemfile Gemfile.lock .
-# RUN bundle install
-RUN gem install bundler --version "$BUNDLE_VERSION"
+RUN bundle install
 COPY --chown=app:app . .
 
 RUN SECRET_KEY_BASE=`bin/rails secret` \
